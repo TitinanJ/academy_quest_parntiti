@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+
 gem "rails", "~> 8.0.2"
 gem "propshaft"
 gem "pg", "~> 1.1"
@@ -20,7 +21,9 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "rspec-rails", "~> 8.0.0"
   gem "dotenv-rails"
+  gem "simplecov"
 end
 
 group :development do
@@ -30,4 +33,9 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
+  gem "webdrivers", require: false
+  gem "factory_bot_rails"
+  gem "rails-controller-testing"
+  gem "database_cleaner-active_record"
+  gem "cucumber-rails", require: false
 end
