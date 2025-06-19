@@ -18,7 +18,7 @@
     <div class="flex items-center flex-shrink-0 ml-4">
       <%= link_to "Delete", quest_path(quest), 
           method: :delete,
-          data: { confirm: "Are you sure you want to delete this quest?", test_id: "delete-quest-#{quest.id}" },
+          data: { test_id: "delete-quest-#{quest.id}" },
           class: "bg-[#6d554a] hover:bg-[#463730] text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg" %>
     </div>
   </div>
