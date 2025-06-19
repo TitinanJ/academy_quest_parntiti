@@ -10,4 +10,39 @@
       </div>
     </div>
   </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+    <%= form_with(model: @quest, local: true, class: "flex flex-col sm:flex-row gap-4") do |form| %>
+      <div class="flex-1">
+        <%= form.text_field :name, placeholder: "Add a new quest...", 
+            class: "w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all duration-300 text-lg placeholder-gray-400",
+            data: { test_id: "quest-input" } %>
+      </div>
+      <%= form.submit "Add Quest", 
+          class: "bg-[#2b78a1] hover:bg-[#1f5673] text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ",
+          data: { test_id: "submit-quest-button" } %>
+    <% end %>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+    <% if @quests.any? %>
+      <div class="divide-y divide-gray-100">
+        <% @quests.each do |quest| %>
+          <turbo-frame id="quest_<%= quest.id %>">
+            <%= render "quest", quest: quest %>
+          </turbo-frame>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="p-12 text-center">
+        <div class="text-gray-400 mb-4">
+          <svg class="mx-auto h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+        </div>
+        <p class="text-xl text-gray-500 font-medium mb-2" data-test-id="empty-quest" >No quests yet!</p>
+        <p class="text-gray-400">Add your first quest above to get started on your journey.</p>
+      </div>
+    <% end %>
+  </div>
 </div>
